@@ -1,4 +1,4 @@
-## Vite + React + TypeScript + Material UI
+## Vite + React + TypeScript + Material UI + Prettier + ESlint + Husky
 
 ---
 
