@@ -1,14 +1,11 @@
-import { IconButton } from "@mui/material"
+import { IconButton, Paper } from '@mui/material';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import * as React from 'react';
-import Button from '@mui/material/Button';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Grow from '@mui/material/Grow';
 import Popper from '@mui/material/Popper';
 import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
-import Stack from '@mui/material/Stack';
-import CPaper from "./custom-mui/Paper";
 
 export function ProfileButton() {
   const [open, setOpen] = React.useState(false);
@@ -19,8 +16,7 @@ export function ProfileButton() {
   };
 
   const handleClose = (event: Event | React.SyntheticEvent) => {
-    if (anchorRef.current &&
-      anchorRef.current.contains(event.target as HTMLElement)) {
+    if (anchorRef.current && anchorRef.current.contains(event.target as HTMLElement)) {
       return;
     }
 
@@ -40,14 +36,13 @@ export function ProfileButton() {
   const prevOpen = React.useRef(open);
   React.useEffect(() => {
     if (prevOpen.current === true && open === false) {
-      anchorRef.current!.focus();
+      anchorRef.current && anchorRef.current.focus();
     }
 
     prevOpen.current = open;
   }, [open]);
 
   return (
-
     <div>
       <IconButton
         ref={anchorRef}
@@ -56,27 +51,30 @@ export function ProfileButton() {
         aria-expanded={open ? 'true' : undefined}
         aria-haspopup="true"
         onClick={handleToggle}
-        color='inherit'>
+        color="inherit"
+      >
         <AccountCircleIcon />
       </IconButton>
       <Popper
-        style={{ 'zIndex': 5 }}
+        style={{ zIndex: 5 }}
         open={open}
         anchorEl={anchorRef.current}
         role={undefined}
         placement="bottom-start"
         transition
         disablePortal
-        nonce={undefined} onResize={undefined} onResizeCapture={undefined}      >
+        nonce={undefined}
+        onResize={undefined}
+        onResizeCapture={undefined}
+      >
         {({ TransitionProps, placement }) => (
           <Grow
             {...TransitionProps}
             style={{
-              transformOrigin:
-                placement === 'bottom-start' ? 'left top' : 'left bottom',
+              transformOrigin: placement === 'bottom-start' ? 'left top' : 'left bottom',
             }}
           >
-            <CPaper >
+            <Paper elevation={1}>
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList
                   autoFocusItem={open}
@@ -88,7 +86,7 @@ export function ProfileButton() {
                   <MenuItem onClick={handleClose}>Registrar</MenuItem>
                 </MenuList>
               </ClickAwayListener>
-            </CPaper>
+            </Paper>
           </Grow>
         )}
       </Popper>

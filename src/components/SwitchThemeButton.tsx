@@ -1,9 +1,9 @@
-import { useTheme } from "@mui/material/styles";
-import { useContext } from "react";
-import { IconButton } from "@mui/material";
+import { useTheme } from '@mui/material/styles';
+import { useContext } from 'react';
+import { IconButton } from '@mui/material';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
-import { ColorModeContext } from "../theme/MyThemeProvider";
+import { ColorModeContext } from '../theme/MyThemeProvider';
 
 export const SwitchThemeButton = () => {
   const theme = useTheme();
@@ -13,4 +13,4 @@ export const SwitchThemeButton = () => {
       {theme.palette.mode === 'dark' ? <DarkModeIcon /> : <LightModeIcon />}
     </IconButton>
   );
-}
+};

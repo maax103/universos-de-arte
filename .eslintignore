@@ -4,3 +4,6 @@
 /node_modules
 /build
 vite.config.ts
+.prettierrc.js
+.eslintrc.js
+env.d.ts

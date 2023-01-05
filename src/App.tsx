@@ -1,13 +1,10 @@
-import './App.css';
-import { MyThemeProvider } from './theme/MyThemeProvider.js';
+import { MyThemeProvider } from './theme/MyThemeProvider';
 import { CssBaseline } from '@mui/material';
 import { Home } from './pages/Home';
-import { ReactDOM } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { Vagas } from './pages/Vagas';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { About } from './pages/About';
 
 function App() {
-
   return (
     <>
       <MyThemeProvider>
@@ -15,8 +12,8 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/vagas" element={<Vagas />} />
-            <Route path="*" element={<h1>Erro</h1>}/>
+            <Route path="/about" element={<About />} />
+            <Route path="*" element={<h1>Página nao encontrada</h1>} />
           </Routes>
         </Router>
       </MyThemeProvider>

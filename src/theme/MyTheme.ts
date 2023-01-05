@@ -1,22 +1,19 @@
 interface ILightTheme {
   palette?: {
-    mode?: string
-  }
+    mode?: string;
+  };
 }
 
 interface IDarkTheme {
   palette?: {
-    mode?: string
-  }
+    mode?: string;
+  };
 }
 
 export const LightTheme: ILightTheme = {
-  palette: {
-  },
-}
+  palette: {},
+};
 
-export const DarkTheme : IDarkTheme = {
-  palette: {
-
-  },
-}
+export const DarkTheme: IDarkTheme = {
+  palette: {},
+};

@@ -1,3 +1,5 @@
-# Vite + React + TypeScript + Material UI
+## Vite + React + TypeScript + Material UI
 
-Portal de vagas para uma empresa. Projeto em desenvolvimento.
+---
+
+Aplicação produzida para facilitar a produção de conteúdo da @universosdearte no Instagram.

@@ -1,33 +1,39 @@
 import {
-  AppBar, Box, Divider, IconButton, List, ListItem,
-  ListItemButton, ListItemIcon, ListItemText, SwipeableDrawer, Toolbar, Typography, Link
-} from '@mui/material'
-import { grey } from '@mui/material/colors'
-import { useIsLightModeOn } from '../theme/MyThemeProvider'
-import { useTheme } from '@mui/material/styles'
-import React, { useState } from 'react'
-
-import { ProfileButton } from './ProfileButton'
-import { SwitchThemeButton } from './SwitchThemeButton'
-import MenuIcon from '@mui/icons-material/Menu'
+  AppBar,
+  Box,
+  Divider,
+  IconButton,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  SwipeableDrawer,
+  Toolbar,
+  Typography,
+  Link,
+} from '@mui/material';
+import { grey } from '@mui/material/colors';
+import { useIsLightModeOn } from '../theme/MyThemeProvider';
+import { useTheme } from '@mui/material/styles';
+import React, { useState } from 'react';
+// import { ProfileButton } from './ProfileButton'
+import { SwitchThemeButton } from './SwitchThemeButton';
+import MenuIcon from '@mui/icons-material/Menu';
 import InfoIcon from '@mui/icons-material/Info';
-import InboxIcon from '@mui/icons-material/Inbox'
-import MailIcon from '@mui/icons-material/Mail'
 import HomeIcon from '@mui/icons-material/Home';
-import WorkIcon from '@mui/icons-material/Work'; 
-import PhoneIcon from '@mui/icons-material/Phone';
 
-export const Appbar : Function = () => {
+export const Appbar = () => {
   const theme = useTheme();
   const isLightModeOn = useIsLightModeOn();
 
   const [state, setState] = useState(false);
 
-  const toggleDrawer = (event : any) => {
+  const toggleDrawer = (event: React.MouseEvent | React.KeyboardEvent) => {
     if (
       event &&
       event.type === 'keydown' &&
-      (event.key === 'Tab' || event.key === 'Shift')
+      ((event as React.KeyboardEvent).key === 'Tab' || (event as React.KeyboardEvent).key === 'Shift')
     ) {
       return;
     }
@@ -39,51 +45,38 @@ export const Appbar : Function = () => {
     <Box
       sx={{ width: 250 }}
       role="presentation"
-      onClick={(e) => { toggleDrawer(e) }}
-      onKeyDown={(e) => { toggleDrawer(e) }}
+      onClick={(e: React.MouseEvent) => {
+        toggleDrawer(e);
+      }}
+      onKeyDown={(e: React.KeyboardEvent) => {
+        toggleDrawer(e);
+      }}
     >
       <List>
-
-        <Link href='/' color='inherit' underline='none'>
+        <Link href="/" color="inherit" underline="none">
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
                 <HomeIcon />
               </ListItemIcon>
-              <ListItemText primary={'Home'} />
+              <ListItemText primary={'App'} />
             </ListItemButton>
           </ListItem>
         </Link>
-        <Link href='/vagas' color='inherit' underline='none'>
+        <Divider />
+        <Link href="/about" color="inherit" underline="none">
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                <WorkIcon />
+                <InfoIcon />
               </ListItemIcon>
-              <ListItemText primary={'Vagas'} />
+              <ListItemText primary={'Informações'} />
             </ListItemButton>
           </ListItem>
         </Link>
       </List>
-      <Divider />
-      <List>
-        {['Contato', 'Sobre'].map((text, index) => (
-          <Link key={text} href='/' color='inherit' underline='none'>
-            <ListItem disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {text === 'Sobre' && <InfoIcon />}
-                  {text === 'Contato' && <PhoneIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          </Link>
-        ))}
-      </List>
     </Box>
   );
-
 
   return (
     <>
@@ -102,21 +95,17 @@ export const Appbar : Function = () => {
             </IconButton>
             <Box sx={{ display: 'flex', flexGrow: 1, flexDirection: 'row' }}>
               <Typography sx={{ color: theme.palette.text.primary }} variant="h6" component="div">
-                Portal - Vagas SCI
+                Universos de Arte
               </Typography>
             </Box>
             <SwitchThemeButton />
-            <ProfileButton />
+            {/* <ProfileButton /> */}
           </Toolbar>
         </AppBar>
       </Box>
-      <SwipeableDrawer
-        open={state}
-        onClose={toggleDrawer}
-        onOpen={toggleDrawer}
-      >
+      <SwipeableDrawer open={state} onClose={toggleDrawer} onOpen={toggleDrawer}>
         <DrawerList />
       </SwipeableDrawer>
     </>
-  )
-}
+  );
+};
